@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
+const dataService = require("./data-service.js");
+var path = require("path");
 
 ///////////////////////////////////////////////////
 
@@ -50,10 +52,22 @@ app.get("/heatMap", function (req, res) {
     res.render('heatMap');
 });
 
+app.get("/data", function (req, res) {
+    dataService.getData().then((data) => {
+        res.render('data', { covidCase: data });
+    }).catch((err) => {
+        res.render('data', { message: err });
+    });
+});
+
 ///////////////////////////////////////////////////
 
 app.use(function (req, res) {
     res.status(404).render('error');
 });
 
-app.listen(HTTP_PORT, onHttpStart);
+dataService.initialize().then(function () {
+    app.listen(HTTP_PORT, onHttpStart);
+}).catch((err) => {
+    console.log(err);
+})

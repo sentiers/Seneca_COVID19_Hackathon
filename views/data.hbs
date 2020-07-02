@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2>Covid Case</h2>
+    <hr />
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Location</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Postal Code</th>
+            <th>Age group</th>
+            <th>Case Reported Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each covidCase}}
+          <tr>
+            <td>{{id}}</td>
+            <td>{{geometry}}</td>
+            <td>{{reporting_phu_address}}</td>
+            <td>{{reporting_phu_city}}</td>
+            <td>{{reporting_phu_postal_code}}</td>
+            <td>{{age_group}}</td>
+            <td>{{case_reported_date}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+  {{#unless covidCase}}
+  <div class="col-md-12 text-center">
+    <strong>{{message}}</strong>
+  </div>
+  {{/unless}}
+</div>
