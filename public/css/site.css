@@ -1,0 +1,21 @@
+body {
+    /*https://images.app.goo.gl/D85ZVczrN683grdZ6*/
+    background-image: url("Covid19.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+   }
+
+.container{
+    margin-top: 200px;
+    margin-bottom : 200px;
+    padding-top: 250px;
+}
+
+footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: rgb(50,50,50);
+    background: rgb(230, 230, 230);
+    text-align: center;
+ }
