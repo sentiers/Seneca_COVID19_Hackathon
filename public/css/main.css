@@ -1,0 +1,52 @@
+img{
+	float: left;
+}
+h1{
+	padding-top: 32px;
+	padding-left: 15px;
+}
+
+nav{
+	margin-top: 0px;
+	overflow: hidden;
+}
+
+#yellowgreen {
+	background-color: yellowgreen ;
+	opacity: .8;
+	padding-right: 15px;
+  }
+  #orange {
+	background-color: orange ;
+	opacity: .8;
+	padding-right: 15px;
+  }
+  #orangered {
+	background-color: orangered;
+	opacity: .8;
+	padding-right: 15px;
+  }
+  #red {
+	background-color: red ;
+	opacity: .8;
+	padding-right: 15px;
+  }
+  #darkred{
+	background-color: darkred ;
+	opacity: .8;
+	color: white;
+	padding-right: 15px;
+  }
+  
+  #map {
+	height: 550px;  /* The height is 400 pixels */
+	width: 80%;  /* The width is the width of the web page */
+	float: left;
+	margin-left: 15px;
+   }
+
+  article{
+	width: 18%;
+	float: right;
+	padding-right: 1px;
+}

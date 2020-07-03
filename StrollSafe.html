@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Stroll Safe</title>
+  <link rel="icon" type="image/ico" href="mask.png">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <title>Seneca COVID19 Hackathon</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+
+      <!-- Logo -->
+      <div class="navbar-header">
+        <span class="navbar-brand" href="#">COVID19 MAP</span>
+      </div>
+
+      <!-- Navigation link bars -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/heatMap">Heat Map</a></li>
+          <li><a href="/data">Data</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <img src="mask.png" width="100" height="100">
+  <h1>Stroll Safe</h1>
+
+  <article class=legend>
+    <div id=yellowgreen> Less Than 30 </div>
+    <div id=orange>30-80</div>
+    <div id=orangered>80-150 <div>
+        <div id=red>150-300</div>
+        <div id=darkred>More than 300</div>
+  </article>
+
+  <!--The div element for the map -->
+  <div id="map">
+    <script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Toronto
+        var toronto = { lat: 43.651070, lng: -79.347015 };
+        // The map, centered at Toronto
+        var map = new google.maps.Map(
+          document.getElementById('map'), { zoom: 11, center: { lat: 43.651070, lng: -79.347015 } });
+
+        map.data.loadGeoJson('https://raw.githubusercontent.com/andandrijana/hackathing/master/MissandToronto.geojson');
+
+
+
+        map.data.setStyle(function (feature) {
+          var CovidCases = feature.getProperty('COVID_CASES');
+          var color = "darkred";
+          if (CovidCases < 30) {
+            color = "yellowgreen";
+          }
+          if (CovidCases >= 30 && CovidCases < 80) {
+            color = "Yellow";
+          }
+          if (CovidCases >= 80 && CovidCases < 150) {
+            color = "orange";
+          }
+          if (CovidCases >= 151 && CovidCases < 200) {
+            color = "orangered";
+          }
+          if (CovidCases >= 201 && CovidCases < 300) {
+            color = "red";
+          }
+          return {
+            fillColor: color,
+            strokeWeight: .5
+          }
+        });
+
+      }
+    </script>
+  </div>
+  <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)sss
+    * The callback parameter executes the initMap() function
+    -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO60Y6-KNQEyU3PunC17wRvwgCsnT7HpY&callback=initMap">
+    </script>
+
+
+</body>
+
+</html>

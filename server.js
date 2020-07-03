@@ -49,7 +49,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/heatMap", function (req, res) {
-    res.render('heatMap');
+    res.sendFile(path.join(__dirname, "/StrollSafe.html"));
 });
 
 app.get("/data", function (req, res) {
